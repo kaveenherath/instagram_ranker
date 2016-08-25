@@ -19,8 +19,9 @@ defmodule Irankerg.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", Irankerg do
-  #   pipe_through :api
-  # end
+  scope "/api", Irankerg do
+    pipe_through :api
+
+    get "/self/:user", PageController, :getSelf
+  end
 end
