@@ -6,17 +6,6 @@ defmodule Irankerg.PageController do
     render conn, "index.html"
   end
 
-
-  # def getSelf(conn, %{"user" => id}) do
-  #
-  #
-  #
-  #   json conn, %{
-  #                 user: id,
-  #               }
-  # end
-
-
   def getSelf(conn, %{"user" => id}) do
     result = HTTPotion.get("httpbin.org/get", query: %{page: 2})
     parsed = Poison.Parser.parse!(result.body, keys: :atoms!)
