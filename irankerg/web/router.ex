@@ -21,6 +21,6 @@ defmodule Irankerg.Router do
 
   scope "/api", Irankerg do
     pipe_through :api
-    get "/self/:user", PageController, :getSelf
+    get "/user/:id", PageController, :getUser
   end
 end
