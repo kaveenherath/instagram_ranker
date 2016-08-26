@@ -6,11 +6,10 @@ defmodule Irankerg.PageController do
     render conn, "index.html"
   end
 
-  def getSelf(conn, %{"user" => id}) do
-    result = HTTPotion.get("httpbin.org/get", query: %{page: 2})
-    parsed = Poison.Parser.parse!(result.body, keys: :atoms!)
-    IO.puts(parsed.url)
-    json conn, parsed.url
+  def getSelf(conn, _params) do
+    access_token = System.get_env("ACCESS_TOKEN")
+    result = HTTPotion.get("https://api.instagram.com/v1/users/self/", query: %{access_token: access_token})
+    parsed = Poison.Parser.parse!(result.body)
+    json conn, parsed
   end
-
 end
