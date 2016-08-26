@@ -1,5 +1,8 @@
 FROM ubuntu:latest
 
+
+#need to set ACCESS_TOKEN as ENV
+
 # Elixir requires UTF-8
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
@@ -33,5 +36,5 @@ RUN tar xvzf irankerg.tar.gz
 WORKDIR "/irankerg"
 RUN mix deps.get
 
-#need to fix this
+#need to fix this, throws error not sure why
 RUN npm install; exit 0
